@@ -1,0 +1,47 @@
+route_callbacks:
+  - '\Drupal\commerce_api\Routing\Routes::routes'
+  - '\Drupal\commerce_api\Routing\WishlistIntegrationRoutes::routes'
+commerce_api.current_store:
+  path: '/%jsonapi%/current-store'
+  defaults:
+    _jsonapi_resource: Drupal\commerce_api\Resource\CurrentStoreResource
+    # @todo this may have a different bundle.
+    _jsonapi_resource_types: ['store--online']
+    # @todo defined for openapi definition.
+    resource_type: 'store--online'
+  options:
+    # @todo add a response policy based on this route alone, so dynamic page cache is allowed but not page_cache
+    no_cache: 'TRUE'
+    # @todo defined for openapi definition.
+    parameters:
+      resource_type:
+        type: jsonapi_resource_type
+  requirements:
+    _access: 'TRUE'
+
+commerce_api.webhook_order_fulfillment:
+  path: '/webhooks/fulfillment/{commerce_order}'
+  defaults:
+    _controller: Drupal\commerce_api\Controller\WebhookController::handleTransition
+    transition: 'fulfill'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      commerce_order:
+        type: 'entity:commerce_order'
+  requirements:
+    _entity_access: 'commerce_order.update'
+    _access: 'TRUE'
+
+commerce_api.webhook_order_transition:
+  path: '/webhooks/order/{commerce_order}/{transition}'
+  defaults:
+    _controller: Drupal\commerce_api\Controller\WebhookController::handleTransition
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      commerce_order:
+        type: 'entity:commerce_order'
+  requirements:
+    _entity_access: 'commerce_order.update'
+    transition: '[a-z]+'

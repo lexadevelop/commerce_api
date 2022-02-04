@@ -1,0 +1,6 @@
+services:
+  commerce_api_test.order_subscriber:
+    class: Drupal\commerce_api_test\EventSubscriber\OrderSubscriber
+    arguments: ['@state']
+    tags:
+      - { name: event_subscriber }

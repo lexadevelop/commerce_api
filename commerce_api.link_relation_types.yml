@@ -1,0 +1,22 @@
+# JSON:API Comment's extension link relation types.
+# See https://tools.ietf.org/html/rfc8288#section-2.1.2
+shipping-methods:
+  # uri: 'https://drupal.org/project/commerce_api/link-relations/#shipping-methods'
+  description: "The link's target points to a resource that has shipping methods on the link's context."
+  notes: "This link relation type extends the `related` link relation type. It inherits all of the same semantics while adding new semantics of its own."
+current-store:
+  # uri: 'https://drupal.org/project/commerce_api/link-relations/#shipping-methods'
+  description: "The link's target points to a resource that has shipping methods on the link's context."
+  notes: "This link relation type extends the `related` link relation type. It inherits all of the same semantics while adding new semantics of its own."
+payment:
+  description: "The link's target points to a resource that allows creating a payment for an order."
+  notes: "This link relation type extends the `related` link relation type. It inherits all of the same semantics while adding new semantics of its own."
+payment-create:
+  description: "The link's target points to a resource that creates a payment from a payment method."
+  notes: "This link relation type extends the `related` link relation type. It inherits all of the same semantics while adding new semantics of its own."
+payment-approve:
+  description: "The link's target points to a resource that approves a pending off-site payment."
+  notes: "This link relation type extends the `related` link relation type. It inherits all of the same semantics while adding new semantics of its own."
+payment-cancel:
+  description: "The link's target points to a resource that cancels a pending off-site payment."
+  notes: "This link relation type extends the `related` link relation type. It inherits all of the same semantics while adding new semantics of its own."

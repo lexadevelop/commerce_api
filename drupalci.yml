@@ -1,0 +1,24 @@
+# This is the DrupalCI testbot build file for JSON:API Resources.
+# Learn to make one for your own drupal.org project:
+# https://www.drupal.org/drupalorg/docs/drupal-ci/customizing-drupalci-testing
+build:
+  assessment:
+    validate_codebase:
+      phplint:
+      container_composer:
+      phpcs:
+        sniff-all-files: true
+        halt-on-fail: true
+    testing:
+      run_tests.standard:
+        types: 'PHPUnit-Unit,PHPUnit-Kernel,PHPUnit-Functional'
+        testgroups: '--all'
+        # @todo put to `false` after https://www.drupal.org/project/jsonapi_hypermedia/issues/3111905
+        suppress-deprecations: true
+      run_tests.javascript:
+        concurrency: 15
+        types: 'PHPUnit-FunctionalJavascript'
+        testgroups: '--all'
+        # @todo put to `false` after https://www.drupal.org/project/jsonapi_hypermedia/issues/3111905
+        suppress-deprecations: true
+        halt-on-fail: false

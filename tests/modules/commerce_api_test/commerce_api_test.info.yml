@@ -1,0 +1,6 @@
+name: Commerce API Test
+type: module
+description: Contains various non-specific things needed in Commerce API tests.
+package: Testing
+dependencies:
+  - commerce_api:commerce_api
